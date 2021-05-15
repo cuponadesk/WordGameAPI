@@ -5,8 +5,6 @@ import com.baringhaus.worldgame.dal.LettersRepository;
 import com.baringhaus.worldgame.model.Letter;
 import com.baringhaus.worldgame.model.Letters;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,10 +19,7 @@ import java.util.List;
 @RestController
 public class LettersController {
 
-	private final Logger LOG = LoggerFactory.getLogger(getClass());
-
 	private final LettersRepository lettersRepository;
-
 	private final LettersDAL lettersDAL;
 
 	public LettersController(LettersRepository lettersRepository, LettersDAL lettersDAL) {
