@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,11 +33,10 @@ public class LettersController {
 
 	@RequestMapping(value = "/letters", method = RequestMethod.GET)
 	public List<Letters> getAllLetters() {
-		LOG.info("Fucking around.");
 		return lettersRepository.findAll();
 	}
 
-
+	@CrossOrigin
 	@RequestMapping(value = "/random", method = RequestMethod.GET)
 	public Letter getRandom() {
 		Query query = new Query();
