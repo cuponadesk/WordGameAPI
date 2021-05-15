@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.mongodb.core.query.Query;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class LettersController {
 
@@ -36,7 +37,7 @@ public class LettersController {
 		return lettersRepository.findAll();
 	}
 
-	@CrossOrigin
+
 	@RequestMapping(value = "/random", method = RequestMethod.GET)
 	public Letter getRandom() {
 		Query query = new Query();
