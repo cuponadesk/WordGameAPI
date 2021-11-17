@@ -46,7 +46,6 @@ public class LettersDALImpl implements LettersDAL {
 								"  words: \"$required.v\"\n" +
 								"}}," +
 								"{$sample: { size : 1}}] "
-//				+ "characters: { $arrayElemAt: [ {$objectToArray: \"$characters\"  },  { $floor: {  $multiply: [ { $rand: {}  }, 7 ] } }]}}]"
 				))
 				.append("cursor", new BasicDBObject("batchSize", 1)
 		);
@@ -60,34 +59,6 @@ public class LettersDALImpl implements LettersDAL {
 		r.setLetters((List<String>) b.get("letters"));
 
 
-//		MongoClient mongoClient = new MongoClient(
-//				new MongoClientURI(
-//						"mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
-//				)
-//		);
-//		MongoDatabase database = mongoClient.getDatabase("letterCombinations");
-//		MongoCollection<Document> collection = database.getCollection("letters");
-//
-//
-//		AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$project",
-//						new Document("letters", 1L)
-//								.append("characters",
-//										new Document("$arrayElemAt", Arrays.asList(new Document("$objectToArray", "$characters"),
-//												new Document("$floor",
-//														new Document("$multiply", Arrays.asList(new Document("$rand",
-//																new Document()), 7L))))))),
-//				new Document("$sample",
-//						new Document("size", 1L))));
-//
-//		MongoCursor<Document> iterator = result.iterator();
-//		Letter r = new Letter();
-//		while (iterator.hasNext()) {
-//			Document next = iterator.next();
-//			r.setLetters(next.getString("letters"));
-//			Document c = (Document) next.get("characters");
-//			r.setCharacter(c.getString("k"));
-//			r.setWords((ArrayList<String>) c.get("v"));
-//		}
 
 		return r;
 	}
